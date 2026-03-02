@@ -109,7 +109,7 @@ kubectl get nodes
 kubectl create deployment myservice --image=ubuntu-java/myservice:1
 ```
 
-The image used comes from the Docker hub: [https://hub.docker.com/r/efrei/myservice/tags](https://hub.docker.com/layers/aya04el/ubuntu-java)
+The image used comes from the Docker hub:https://hub.docker.com/layers/aya04el/ubuntu-java
 
 But you can use your own image instead.
 
