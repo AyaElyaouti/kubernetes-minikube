@@ -106,7 +106,7 @@ Example: `docker push aya04el/myservice:1`
 kubectl get nodes
 ```
 ```
-kubectl create deployment myservice --image=ubuntu-java/myservice:1
+kubectl create deployment myservice --image=aya04el/ubuntu-java:1
 ```
 
 The image used comes from the Docker hub:[https://hub.docker.com/layers/aya04el/ubuntu-java](https://hub.docker.com/layers/aya04el/ubuntu-java/1/images)
