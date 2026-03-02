@@ -136,6 +136,9 @@ You can also enter inside the container in a interactive mode with:
 kubectl exec -it podname -- /bin/bash
 ```
 
+Exemple : `kubectl exec -it myservice-746766f779-2lqsx -- /bin/bash`
+
+
 where podname is the name of the pods obtained with:
 ```
 kubectl get pods
