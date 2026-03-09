@@ -284,6 +284,71 @@ kubectl apply -f myservice-loadbalancing-service.yml
 ```
 Then test if it works as expected.
 
+## Routing rule to a service using Ingress
+
+You can use Ingress to expose your Service. Ingress is not a Service type, but it acts as the entry point for your cluster. It lets you consolidate your routing rules into a single resource as it can expose multiple services under the same IP address. Ingress exposes HTTP and HTTPS routes from outside the cluster to services within the cluster. An Ingress may be configured to give Services externally-reachable URLs, load balance traffic, terminate SSL / TLS, and offer name-based virtual hosting.
+
+## Set up Ingress on Minikube with the NGINX Ingress Controller
+
+Enable the NGINX Ingress controller:
+```
+minikube addons enable ingress
+```
+Verify that the NGINX Ingress controller is running:
+```
+kubectl get pods -n ingress-nginx
+```
+Create a Deployment and expose it as a NodePort (not a loadbalancer).
+
+Check if it works.
+
+A yaml file for ingress: https://github.com/charroux/kubernetes-minikube/blob/main/ingress.yml
+```
+kubectl apply -f ingress.yml
+```
+Retrieve the IP address of Ingress:
+
+kubectl get ingress
+NAME                 CLASS    HOSTS                  ADDRESS        PORTS   AGE
+
+example-ingress      nginx   myservice.info         192.168.64.2   80      18m
+On Linux: edit the /etc/hosts file and add at the bottom values for:
+
+IngressAddress myservice.info
+
+Where address is given by:
+```
+minikube ip
+```
+On Mac: edit the /etc/hosts file and add at the bottom values for:
+
+127.0.0.1 myservice.info
+
+Then check in your Web browser:
+
+http://myservice.info/
+
+On Windows : edit the c:\windows\system32\drivers\etc\hosts file, add
+
+127.0.0.1 myservice.info
+
+Enable a tunnel for Minikube:
+
+minikube addons enable ingress-dns
+minikube tunnel
+Then check in your Web browser:
+
+http://myservice.info/
+
+Create a second deployment and its service, then add a new route to the ingress.yml file.
+
+Delete resources
+```
+kubectl delete services myservice
+```
+```
+kubectl delete deployment myservice
+```
 
 
 
