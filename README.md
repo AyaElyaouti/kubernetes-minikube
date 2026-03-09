@@ -173,63 +173,85 @@ Type values and their behaviors are:
 ExternalName: Maps the Service to the contents of the externalName field (e.g. foo.bar.example.com), by returning a CNAME record
 
 ## Expose HTTP and HTTPS route using NodePort
-
+```
 kubectl expose deployment myservice --type=NodePort --port=8080
+```
 Retrieve the service address:
 
+```
 minikube service myservice --url
+```
 This format of this address is NodeIP:NodePort.
 
 Test this address inside your browser. It should display hello again.
 
 Look from the NodeIP and the NodePort in the minikube dashboard.
 
-Scaling and load balancing
+## Scaling and load balancing
 
 Check if the myservice deployment is running:
-
+```
 kubectl get deployments
+```
 How many instance are actually running:
-
+```
 kubectl get pods
+```
 Start a second instance:
-
+```
 kubectl scale --replicas=2 deployment/myservice
+```
+```
 kubectl get deployments
+```
 and
-
+```
 kubectl get pods
+```
 again
 
-Creating a Service of type LoadBalancer
+## Creating a Service of type LoadBalancer
 
 Check if the myservice deployment is running:
 
+```
 kubectl get deployments
+```
 If a service is running in front of the deployment you must delete this service first in ordre to create a new one of kind LoadBalancer. So retreive the service using:
 
+```
 kubectl get services
+```
 And delete it:
-
+```
 kubectl delete service serviceName
+```
+```
 kubectl expose deployment myservice --type=LoadBalancer --port=8080
+```
+```
 minikube service myservice --url
+```
 Test in your web browser
 
-Rolling updates
+## Rolling updates
 
 Rolling updates allow Deployments' update to take place with zero downtime by incrementally updating Pods instances with new ones.
 
 To update the image of the application to version 2, use the set image subcommand, followed by the deployment name and the new image version:
 
+```
 kubectl set image deployments/my-deployment my-deployment=dockerHudId/my-image:v2
+```
 You can also confirm the update by running the rollout status subcommand:
-
+```
 kubectl rollout status deployments/my-deployment
+```
 To roll back the deployment to your last working version, use the rollout undo subcommand:
-
+```
 kubectl rollout undo deployments/my-deployment
-Create a deployment and a service using a yaml file
+```
+## Create a deployment and a service using a yaml file
 
 Yaml files can be used instead of using the command kubectl create deployment and kubectl expose deployment
 
@@ -240,16 +262,19 @@ The yaml file for the node port service: https://github.com/charroux/kubernetes-
 The yaml file for the node port service: https://github.com/charroux/kubernetes-minikube/blob/main/myservice-loadbalancing-service.yml
 
 Apply the deployment:
-
+```
 kubectl apply -f myservice-deployment.yml
+```
 Apply the node port service:
-
+```
 kubectl apply -f myservice-service.yml
+```
 or
 
 Apply the service of type loadbalancer:
-
+```
 kubectl apply -f myservice-loadbalancing-service.yml
+```
 Then test if it works as expected.
 
 
