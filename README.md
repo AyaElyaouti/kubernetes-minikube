@@ -226,6 +226,7 @@ And delete it:
 ```
 kubectl delete service serviceName
 ```
+Example:  ```kubectl delete service myservice```
 ```
 kubectl expose deployment myservice --type=LoadBalancer --port=8080
 ```
@@ -243,14 +244,20 @@ To update the image of the application to version 2, use the set image subcomman
 ```
 kubectl set image deployments/my-deployment my-deployment=dockerHudId/my-image:v2
 ```
+Example: ```kubectl set image deployment/myservice myservice=aya04el/myservice:2```
+
 You can also confirm the update by running the rollout status subcommand:
 ```
 kubectl rollout status deployments/my-deployment
 ```
+Example: ```kubectl rollout status deployment/myservice```
+
 To roll back the deployment to your last working version, use the rollout undo subcommand:
 ```
 kubectl rollout undo deployments/my-deployment
 ```
+Example: ``` kubectl rollout undo deployment/myservice ```
+
 ## Create a deployment and a service using a yaml file
 
 Yaml files can be used instead of using the command kubectl create deployment and kubectl expose deployment
