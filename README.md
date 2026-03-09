@@ -311,9 +311,8 @@ Retrieve the IP address of Ingress:
 kubectl get ingress
 ```
 ```
-NAME                 CLASS    HOSTS                  ADDRESS        PORTS   AGE
-
-example-ingress      nginx   myservice.info         192.168.64.2   80      18m
+NAME              CLASS   HOSTS            ADDRESS        PORTS   AGE
+example-ingress   nginx   myservice.info   192.168.49.2   80      8m2s
 ```
 On Linux: edit the /etc/hosts file and add at the bottom values for:
 
