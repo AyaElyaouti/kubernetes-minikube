@@ -15,10 +15,4 @@ spec:
                 name: myservice
                 port:
                   number: 8080
-          - path: /service2
-            pathType: Prefix
-            backend:
-              service:
-                name: myservice2
-                port:
-                  number: 8080
+         
