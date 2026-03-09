@@ -302,16 +302,19 @@ Create a Deployment and expose it as a NodePort (not a loadbalancer).
 
 Check if it works.
 
-A yaml file for ingress: https://github.com/charroux/kubernetes-minikube/blob/main/ingress.yml
+A yaml file for ingress: https://github.com/AyaElyaouti/kubernetes-minikube/blob/main/ingress.yml
 ```
 kubectl apply -f ingress.yml
 ```
 Retrieve the IP address of Ingress:
-
+```
 kubectl get ingress
+```
+```
 NAME                 CLASS    HOSTS                  ADDRESS        PORTS   AGE
 
 example-ingress      nginx   myservice.info         192.168.64.2   80      18m
+```
 On Linux: edit the /etc/hosts file and add at the bottom values for:
 
 IngressAddress myservice.info
@@ -333,9 +336,12 @@ On Windows : edit the c:\windows\system32\drivers\etc\hosts file, add
 127.0.0.1 myservice.info
 
 Enable a tunnel for Minikube:
-
+```
 minikube addons enable ingress-dns
+```
+```
 minikube tunnel
+```
 Then check in your Web browser:
 
 http://myservice.info/
