@@ -262,11 +262,11 @@ Example: ``` kubectl rollout undo deployment/myservice ```
 
 Yaml files can be used instead of using the command kubectl create deployment and kubectl expose deployment
 
-The yaml file for the deployment: https://github.com/charroux/kubernetes-minikube/blob/main/myservice-deployment.yml
+The yaml file for the deployment: https://github.com/AyaElyaouti/kubernetes-minikube/blob/main/myservice-deployment.yml
 
-The yaml file for the node port service: https://github.com/charroux/kubernetes-minikube/blob/main/myservice-service.yml
+The yaml file for the node port service: https://github.com/AyaElyaouti/kubernetes-minikube/blob/main/myservice-service.yml
 
-The yaml file for the node port service: https://github.com/charroux/kubernetes-minikube/blob/main/myservice-loadbalancing-service.yml
+The yaml file for the node port service: https://github.com/AyaElyaouti/kubernetes-minikube/blob/main/myservice-loadbalancing-service.yml
 
 Apply the deployment:
 ```
